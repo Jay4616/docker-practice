@@ -1,0 +1,8 @@
+services:
+
+  my-nginx-web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+
+

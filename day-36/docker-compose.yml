@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # 1️⃣ Service Name: Our custom web application
+  web-app:
+    image: jayanth46/node-optimized:v1.0  # Tells Docker to pull your image from the cloud
+    ports:
+      - "3000:3000"                           # Maps port 3000 on your laptop to port 3000 in the container
+    restart: always                           # Infrastructure Self-Healing: If the app crashes, Docker reboots it automatically
+    depends_on:
+      - database                              # Order of Operations: Ensures the database boots up completely before the web app starts
+
+  # 2️⃣ Service Name: Our backend database storage engine
+  database:
+    image: mongo:latest                       # Pulls the official, trusted MongoDB image from Docker Hub
+    ports:
+      - "27017:27017"                         # Default MongoDB port mapping
+    restart: always
+    volumes:
+      - mongo-data:/data/db                   # Data Persistence: Saves database files directly to your laptop so data isn't lost on restart
+
+# 💾 Named Volume Definition
+volumes:
+  mongo-data:                                 # Creates a dedicated, isolated storage drive managed by Docker

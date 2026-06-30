@@ -1,0 +1,10 @@
+{
+  "name": "day-36-app",
+  "version": "1.0.0",
+  "description": "Full Stack Production App",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.3.1"
+  }
+}
